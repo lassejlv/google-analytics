@@ -1,9 +1,9 @@
-FROM node:lts-alpine
+FROM oven/bun:latest
 
 WORKDIR /app
 COPY . .
 
-RUN npm install --force
-RUN npm run build
+RUN bun install --no-save
+RUN bun run build
 
-CMD ["npx", "serve", "-s", "dist", "-l", "6666"]
+CMD ["bunx", "serve", "-s", "dist", "-l", "6666"]
