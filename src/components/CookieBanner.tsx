@@ -10,8 +10,6 @@ export default function CookieBanner() {
   useEffect(() => {
     if (localStorage.getItem("cookieBanner") === "true") {
       setWithAnalytics(true)
-    } else {
-      setWithAnalytics(false)
     }
   }, [withAnalytics])
 
@@ -25,10 +23,19 @@ export default function CookieBanner() {
       {!withAnalytics &&
         <div className="absolute bottom-0 w-full bg-zinc-900 text-white text-center p-4">
           <p className="text-sm">We use cookies to improve your experience on our site. By using our site, you consent to our use of cookies. <a href="/privacy-policy" className="underline">Learn more</a></p>
-          <button onClick={() => {
-            localStorage.setItem("cookieBanner", "true")
-            setWithAnalytics(true)
-          }} className="bg-white text-gray-800 px-4 py-2 rounded mt-2">Accept</button>
+
+
+          <div className="flex gap-3 justify-center">
+            <button onClick={() => {
+              localStorage.setItem("cookieBanner", "true")
+              setWithAnalytics(true)
+            }} className="bg-indigo-500 text-gray-800 px-4 py-2 rounded mt-2">Accept</button>
+
+            <button onClick={() => {
+              localStorage.setItem("cookieBanner", "true")
+              setWithAnalytics(true)
+            }} className="bg-red-500 text-gray-800 px-4 py-2 rounded mt-2">Decline</button>
+          </div>
         </div>
       }
     </>
